@@ -1,0 +1,603 @@
+:root {
+    --primary: #2563EB;
+    --background: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --water-color: #E0F2FE;
+    --water-text: #0369A1;
+    --energy-color: #FEF3C7;
+    --energy-text: #B45309;
+    --gas-color: #FFEDD5;
+    --gas-text: #C2410C;
+    --radius: 16px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--background);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.main-header {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.main-header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+}
+
+/* Modules/Cards */
+.module {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+
+.module h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary);
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Visual Education */
+.invoice-visual {
+    background: #F9FAFB;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px dashed #D1D5DB;
+}
+
+.meter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.meter-display {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    text-align: center;
+}
+
+.meter-display.current {
+    border-color: var(--primary);
+    background: #EFF6FF;
+}
+
+.meter-display .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.meter-display .value {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.formula-box {
+    text-align: center;
+    background: #FFFBEB;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #92400E;
+    font-weight: 500;
+}
+
+.result-preview {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Radio Cards */
+.radio-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.radio-group input {
+    display: none;
+}
+
+.service-option {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+input:checked+.service-option.water {
+    background: var(--water-color);
+    border-color: var(--water-text);
+    color: var(--water-text);
+}
+
+input:checked+.service-option.energy {
+    background: var(--energy-color);
+    border-color: var(--energy-text);
+    color: var(--energy-text);
+}
+
+input:checked+.service-option.gas {
+    background: var(--gas-color);
+    border-color: var(--gas-text);
+    color: var(--gas-text);
+}
+
+/* Button */
+.btn-calculate {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-calculate:hover {
+    background: #1D4ED8;
+}
+
+/* Results */
+.hidden {
+    display: none;
+}
+
+.result-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F0FDF4;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #BBF7D0;
+}
+
+.res-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.res-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.res-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.res-unit {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.res-item.total .res-value {
+    color: #15803D;
+    font-size: 1.8rem;
+}
+
+.explanation-box {
+    background: #FFF;
+    border-left: 4px solid #F59E0B;
+    padding: 15px;
+    background: #FFFBEB;
+    border-radius: 0 8px 8px 0;
+}
+
+.explanation-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: #B45309;
+}
+
+.explanation-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Welcome Modal */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 99, 235, 0.95);
+    /* Azul translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.5s;
+}
+
+.welcome-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    width: 300px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.heart-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: beat 1s infinite alternate;
+}
+
+@keyframes beat {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.welcome-card h1 {
+    color: var(--primary);
+    margin: 10px 0;
+    font-size: 1.8rem;
+}
+
+.welcome-card p {
+    font-size: 1.2rem;
+    margin: 5px 0 20px;
+    color: var(--text-main);
+}
+
+.welcome-card .question {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.btn-start {
+    background: #ec4899;
+    /* Rosa amor */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    transition: transform 0.2s;
+}
+
+.btn-start:hover {
+    transform: scale(1.05);
+}
+
+/* Print Styles */
+@media print {
+
+    .main-header,
+    .calculator-card,
+    .main-footer,
+    .education-card,
+    .btn-actions {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .module {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .results-card {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+}
+
+/* Invoice Design Enhanced */
+.invoice-paper {
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #e5e7eb;
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tira decorativa superior */
+.invoice-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* Alinear abajo para que fecha quede a nivel del nombre */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.invoice-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.invoice-logo span {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.invoice-logo h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.invoice-meta {
+    text-align: right;
+}
+
+.invoice-meta p {
+    margin: 3px 0;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.invoice-meta strong {
+    color: #111827;
+}
+
+/* Tabla de Factura */
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.invoice-table th {
+    text-align: left;
+    padding: 12px 10px;
+    color: #6b7280;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.invoice-table td {
+    padding: 16px 10px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    font-variant-numeric: tabular-nums;
+    /* Alinear números */
+}
+
+.invoice-table .text-right {
+    text-align: right;
+}
+
+/* Fila destacada (Consumo) */
+.row-highlight {
+    background-color: #f9fafb;
+}
+
+.row-highlight td {
+    color: #111827;
+    font-weight: 500;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Footer Total */
+.invoice-table tfoot .total-row td {
+    border-top: 2px solid #111827;
+    /* Línea negra fuerte para total */
+    border-bottom: none;
+    padding-top: 20px;
+    padding-bottom: 0;
+    font-size: 1.1rem;
+    color: #6b7280;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.invoice-table tfoot .total-row td:last-child {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #059669;
+    letter-spacing: -0.5px;
+}
+
+.invoice-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #e5e7eb;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+/* Ajustes de impresión para conservar fondo y colores */
+@media print {
+    .invoice-paper {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    .invoice-header {
+        border-bottom-color: #000;
+    }
+
+    .row-highlight {
+        background-color: #f3f4f6 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .invoice-table tfoot .total-row td {
+        border-top-color: #000;
+    }
+}
+
+/* Action Buttons */
+.btn-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #E5E7EB;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-secondary:hover {
+    background: #F3F4F6;
+    color: var(--primary);
+    border-color: var(--primary);
+}
