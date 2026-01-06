@@ -678,3 +678,37 @@ input:checked+.service-option.gas {
     color: var(--primary);
     border-color: var(--primary);
 }
+/* CSS para Impresi�n de Factura Final */
+@media print {
+    body.printing-final .main-header,
+    body.printing-final .calculator-card,
+    body.printing-final .client-card,
+    body.printing-final .results-card,
+    body.printing-final .main-footer,
+    body.printing-final .btn-actions,
+    body.printing-final #welcomeModal {
+        display: none !important;
+    }
+
+    body.printing-final #totalSection {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        border: none !important;
+        background: white !important;
+        box-shadow: none !important;
+    }
+
+    body.printing-final #finalInvoicePaper {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    body.printing-final {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
