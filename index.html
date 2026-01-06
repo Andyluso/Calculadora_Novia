@@ -75,18 +75,18 @@
 
                 <div class="grid-2">
                     <div class="form-group">
-                        <label for="prevReading">Lectura Anterior</label>
-                        <input type="number" id="prevReading" step="0.1" placeholder="Ej: 585.0" required>
+                        <label for="currReading">Lectura Actual</label>
+                        <input type="number" id="currReading" step="any" placeholder="Ej: 593.5" required>
                     </div>
                     <div class="form-group">
-                        <label for="currReading">Lectura Actual</label>
-                        <input type="number" id="currReading" step="0.1" placeholder="Ej: 593.5" required>
+                        <label for="prevReading">Lectura Anterior</label>
+                        <input type="number" id="prevReading" step="any" placeholder="Ej: 585.0" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="unitPrice">Valor por Unidad ($)</label>
-                    <input type="number" id="unitPrice" step="0.01" placeholder="Ej: 6298.14" required>
+                    <input type="number" id="unitPrice" step="any" placeholder="Ej: 6298.14" required>
                 </div>
 
                 <button type="submit" class="btn-calculate">Calcular Ahora</button>
@@ -161,7 +161,61 @@
             </div>
 
             <div class="btn-actions no-print">
+                <button id="btnAddTotal" class="btn-secondary" style="border-color: #10B981; color: #10B981;">➕ Agregar
+                    al Total</button>
                 <button id="btnPrint" class="btn-secondary">🖨️ Imprimir Recibo</button>
+            </div>
+
+            <!-- Sección de Acumulado Total (Factura Final) -->
+            <div id="totalSection" class="hidden no-print" style="margin-top: 40px;">
+                <h2 style="text-align: center; color: #047857; margin-bottom: 20px;">� Factura Consolidada</h2>
+
+                <div id="finalInvoicePaper" class="invoice-paper"
+                    style="border: 2px solid #059669; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div class="invoice-header">
+                        <div class="invoice-logo">
+                            <span>🏡</span>
+                            <h3>Factura de Servicios</h3>
+                            <p style="margin: 5px 0 0; color: #666; font-size: 0.9rem;">Resumen Mensual</p>
+                        </div>
+                        <div class="invoice-meta">
+                            <p><strong>Fecha Emisión:</strong> <span id="finalDate">05/01/2026</span></p>
+                        </div>
+                    </div>
+
+                    <div class="invoice-body">
+                        <table class="invoice-table" id="finalTable">
+                            <thead>
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Consumo</th>
+                                    <th>Valor Unidad</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="finalTableBody">
+                                <!-- Filas de servicios -->
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td colspan="3">TOTAL A PAGAR</td>
+                                    <td class="text-right" id="finalGrandTotal">$0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="invoice-footer">
+                        <p>Gracias por organizar tus finanzas con nosotros.</p>
+                    </div>
+                </div>
+
+                <div class="btn-actions no-print">
+                    <button id="btnClearTotal" style="color: #EF4444; background: white; border: 1px solid #EF4444;"
+                        class="btn-secondary">🗑️ Limpiar Todo</button>
+                    <button id="btnPrintFinal" class="btn-calculate" style="background: #059669;">🖨️ Imprimir Factura
+                        Final</button>
+                </div>
             </div>
         </section>
     </main>
@@ -172,6 +226,5 @@
 
     <script src="script.js"></script>
 </body>
-
 
 </html>
